@@ -5,4 +5,5 @@ sealed class AppScreens(val route: String) {
     object AddDevicePreWifiScreen : AppScreens("add_device_pre_wifi_screen")
     object AddDeviceWifiSelectionScreen : AppScreens("add_device_wifi_selection_screen")
     object DeviceDetailScreen : AppScreens("device_detail_screen")
+    object RequestRepairServiceScreen : AppScreens("request_repair_service_screen")
 }

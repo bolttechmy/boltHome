@@ -1,5 +1,6 @@
 package com.bolttech.bolthome.component
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -13,13 +14,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.bolttech.bolthome.R
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun Page(
-    floatingActionButton: @Composable () -> Unit ={},
-    content: @Composable (PaddingValues) -> Unit ,
+    floatingActionButton: @Composable () -> Unit = {},
+    backPress: () -> Unit = {},
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
         topBar = { AppBar() },
@@ -30,12 +34,19 @@ fun Page(
 }
 
 @Composable
-private fun AppBar() {
+private fun AppBar(backPress: () -> Unit = {}) {
+    val context = LocalContext.current;
     TopAppBar(title = { },
         backgroundColor = Color.Transparent,
         elevation = 0.dp,
         navigationIcon = {
-            Image( painterResource(R.drawable.ic_chevron_left), "", modifier = Modifier.padding(horizontal = 16.dp))
+            Image(
+                painterResource(R.drawable.ic_chevron_left),
+                "",
+                modifier = Modifier.padding(horizontal = 16.dp).clickable {
+                    backPress()
+                }
+            )
         },
         actions = {
             IconButton(onClick = {}) {

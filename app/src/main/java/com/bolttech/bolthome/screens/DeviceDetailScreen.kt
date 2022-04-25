@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import com.bolttech.bolthome.R
 import com.bolttech.bolthome.component.Page
 import com.bolttech.bolthome.data.Devices
-import com.bolttech.bolthome.data.Items
+import com.bolttech.bolthome.navigation.AppScreens
 import com.bolttech.bolthome.viewmodels.DashBoardViewModel
 
 
@@ -39,7 +39,7 @@ fun DeviceDetailScreen(navController: NavController, pos: String?) {
         Column() {
             Column(modifier = Modifier.padding(horizontal = marginHorizontal)) {
                 Text(
-                    "" + device.name,
+                    "${device.name}",
                     color = color,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
@@ -96,7 +96,7 @@ fun DeviceDetailScreen(navController: NavController, pos: String?) {
                     "Request a repair service",
                     color,
                 ) {
-                    navController.popBackStack()
+                    navController.navigate(AppScreens.RequestRepairServiceScreen.route)
                     println("Request a repair servicebutton clicked")
                 }
                 ButtonLayout(
