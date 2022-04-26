@@ -33,7 +33,7 @@ import com.bolttech.bolthome.component.Page
 import com.bolttech.bolthome.data.Node
 import com.bolttech.bolthome.data.UiState
 import com.bolttech.bolthome.ui.theme.Typography
-import com.bolttech.bolthome.viewmodels.ScanResultViewModel
+//import com.bolttech.bolthome.viewmodels.ScanResultViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
@@ -44,7 +44,7 @@ import java.util.*
 fun AddDeviceWifiSelectionScreen(navController: NavController) {
 
     val activity = LocalContext.current as ComponentActivity
-    val scanResultViewModel by remember { (activity).viewModels<ScanResultViewModel>() }
+//    val scanResultViewModel by remember { (activity).viewModels<ScanResultViewModel>() }
     // Wifi permission state
     val wifiPermissionStat = rememberPermissionState(
         android.Manifest.permission.ACCESS_WIFI_STATE
@@ -72,21 +72,21 @@ fun AddDeviceWifiSelectionScreen(navController: NavController) {
                         modifier = Modifier.fillMaxSize()
                     ) {
 
-                        when (val result =
-                            scanResultViewModel.uiState.collectAsState().value) {
-                            is UiState.Content ->
-                                DeviceList(
-                                    nodes = (result.data as? List<*>)?.filterIsInstance<Node>()
-                                        ?: emptyList()
-                                )
-                            is UiState.Error -> Text(text = result.message)
-                            UiState.Loading -> CircularProgressIndicator()
-                            UiState.Empty -> AddDeviceWifi(
-                                activity = activity,
-                                ssid = ssid,
-                                scanResultViewModel = scanResultViewModel
-                            )
-                        }
+//                        when (val result =
+//                            scanResultViewModel.uiState.collectAsState().value) {
+//                            is UiState.Content ->
+//                                DeviceList(
+//                                    nodes = (result.data as? List<*>)?.filterIsInstance<Node>()
+//                                        ?: emptyList()
+//                                )
+//                            is UiState.Error -> Text(text = result.message)
+//                            UiState.Loading -> CircularProgressIndicator()
+//                            UiState.Empty -> AddDeviceWifi(
+//                                activity = activity,
+//                                ssid = ssid,
+//                                scanResultViewModel = scanResultViewModel
+//                            )
+//                        }
 
                     }
                 }
@@ -276,7 +276,7 @@ private fun NodeCard(type: String? = "", name: String?, make: String? = null) {
 private fun AddDeviceWifi(
     activity: ComponentActivity,
     ssid: MutableState<String>,
-    scanResultViewModel: ScanResultViewModel
+//    scanResultViewModel: ScanResultViewModel
 ) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -327,7 +327,7 @@ private fun AddDeviceWifi(
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
-                        scanResultViewModel.doScan(activity)
+//                        scanResultViewModel.doScan(activity)
                         // navController.navigate(AppScreens.ScanResultScreen.route)
                     },
                     shape = RectangleShape

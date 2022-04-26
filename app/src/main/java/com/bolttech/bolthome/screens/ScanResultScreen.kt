@@ -15,33 +15,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.bolttech.bolthome.component.Page
 import com.bolttech.bolthome.data.UiState
-import com.bolttech.bolthome.viewmodels.ScanResultViewModel
+//import com.bolttech.bolthome.viewmodels.ScanResultViewModel
 
 
 @Composable
 fun ScanResultScreen() {
 
-    val activity  = LocalContext.current as ComponentActivity
-
-    Page {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            val mainViewModel by remember { activity.viewModels<ScanResultViewModel>() }
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                when (val result =
-                    mainViewModel.uiState.collectAsState().value) {
-                    is UiState.Content -> run {
-                        result.data
-
-                    }
-                    is UiState.Error -> Text(text = result.message)
-                    UiState.Loading -> CircularProgressIndicator()
-                    UiState.Empty -> {}
-                }
-            }
-        }
-    }
+//    val activity  = LocalContext.current as ComponentActivity
+//
+//    Page {
+//        Surface(modifier = Modifier.fillMaxSize()) {
+//            val mainViewModel by remember { activity.viewModels<ScanResultViewModel>() }
+//            Box(
+//                contentAlignment = Alignment.Center,
+//                modifier = Modifier.fillMaxSize()
+//            ) {
+//                when (val result =
+//                    mainViewModel.uiState.collectAsState().value) {
+//                    is UiState.Content -> run {
+//                        result.data
+//
+//                    }
+//                    is UiState.Error -> Text(text = result.message)
+//                    UiState.Loading -> CircularProgressIndicator()
+//                    UiState.Empty -> {}
+//                }
+//            }
+//        }
+//    }
 
 }
