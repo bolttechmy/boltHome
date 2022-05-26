@@ -10,11 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs 'app/libs'
-        }
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "boltHome"
 include ':app'
-include ':fing'

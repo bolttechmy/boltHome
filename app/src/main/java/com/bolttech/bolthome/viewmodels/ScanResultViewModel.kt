@@ -60,8 +60,8 @@ class ScanResultViewModel : ViewModel() {
                         //validated succesfully
                         {
                             val options: FingScanOptions = FingScanOptions().apply {
-                                resultLevelScanInProgress = FingScanResultLevel.FingScanResultNone
-                                resultLevelScanCompleted = FingScanResultLevel.FingScanResultFull
+                                resultLevelScanInProgress = FingScanResultLevel.NONE
+                                resultLevelScanCompleted = FingScanResultLevel.FULL
                             }
                             scanner.networkScan(options, scanCallback)
                         } else e.printStackTrace()
