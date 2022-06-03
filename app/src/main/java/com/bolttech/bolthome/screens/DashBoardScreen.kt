@@ -39,7 +39,7 @@ fun DashBoardScreen(navController: NavController) {
     Page(
         floatingActionButton = {
             FloatingActionButton(modifier = Modifier.padding(24.dp), onClick = {
-                navController.navigate(AppScreens.AddDevicePreWifiScreen.route)
+                navController.navigate(AppScreens.AddDevicePreWifiScreenWebview.route)
             }) {
                 Icon(imageVector = Icons.Default.Add, "")
             }

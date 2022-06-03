@@ -4,10 +4,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bolttech.bolthome.navigation.AppScreens
-import com.bolttech.bolthome.screens.AddDevicePreWifiScreen
-import com.bolttech.bolthome.screens.AddDeviceWifiSelectionScreen
-import com.bolttech.bolthome.screens.DashBoardScreen
-import com.bolttech.bolthome.screens.DeviceDetailScreen
+import com.bolttech.bolthome.screens.*
 
 @Composable
 fun Start() {
@@ -31,6 +28,11 @@ fun Start() {
         ) {navBackStackEntry->
             val pos:String? = navBackStackEntry.arguments?.getString("pos");
             DeviceDetailScreen(navController, pos)
+        }
+        composable(
+            route = AppScreens.AddDevicePreWifiScreenWebview.route,
+        ) {
+            AddDevicePreWifiScreenWebView(navController)
         }
     }
 }
