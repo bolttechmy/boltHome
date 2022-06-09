@@ -13,7 +13,7 @@ import com.bolttech.bolthome.component.Page
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun AddDevicePreWifiScreenWebView(navController: NavController) {
-    val mUrl = "http://bolthomedev.com.s3-website-ap-southeast-1.amazonaws.com/"
+    val mUrl = "http://bolthome.com.s3-website-ap-southeast-1.amazonaws.com/"
     Page {
         AndroidView(factory = {
             WebView(it).apply {
