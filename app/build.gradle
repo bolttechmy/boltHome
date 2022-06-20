@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.library'
-    //id 'com.android.application'
+//    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
@@ -9,7 +9,7 @@ android {
     compileSdk 31
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-       // applicationId "com.bolttech.bolthome"
+//        applicationId "com.bolttech.bolthome"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -62,8 +62,6 @@ dependencies {
     //Json Converter
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //fing-sdk
-    implementation project(path :":fing", configuration : 'default')
     implementation 'org.snmp4j:snmp4j:3.6.7'
     implementation 'com.google.protobuf:protobuf-java:2.6.1'
     implementation 'com.google.android.gms:play-services-analytics:18.0.1'
