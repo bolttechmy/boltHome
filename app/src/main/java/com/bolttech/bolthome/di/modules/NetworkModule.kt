@@ -37,8 +37,8 @@ class NetworkModule {
             .build()
 
         return Retrofit.Builder()
-//            .baseUrl("https://api.home-protec.app.dev.device.bolttech.asia/v1/")
-            .baseUrl("https://xt12p902nb.execute-api.ap-southeast-1.amazonaws.com/dev/v1/")
+            .baseUrl("https://api.home-protec.app.dev.device.bolttech.asia/v1/")
+//            .baseUrl("https://xt12p902nb.execute-api.ap-southeast-1.amazonaws.com/dev/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
