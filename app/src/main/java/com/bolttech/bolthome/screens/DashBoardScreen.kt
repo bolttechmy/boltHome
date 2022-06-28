@@ -1,5 +1,6 @@
 package com.bolttech.bolthome.screens
 
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -13,6 +14,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
@@ -23,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.bolttech.bolthome.OkHttpApiResponseProvider
 import com.bolttech.bolthome.R
 import com.bolttech.bolthome.component.Page
 import com.bolttech.bolthome.data.Device
@@ -31,6 +34,9 @@ import com.bolttech.bolthome.data.UiState
 import com.bolttech.bolthome.navigation.AppScreens
 import com.bolttech.bolthome.ui.theme.Typography
 import com.bolttech.bolthome.viewmodels.DashBoardViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 
@@ -45,21 +51,34 @@ fun DashBoardScreen(navController: NavController) {
             }
         }
     ) {
+        val coroutineScope = rememberCoroutineScope()
         val ac: ComponentActivity = LocalContext.current as ComponentActivity
         Surface(modifier = Modifier.fillMaxSize()) {
-            val mainViewModel by remember { ac.viewModels<DashBoardViewModel>() }
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                when (val result =
-                    mainViewModel.uiState.collectAsState().value) {
-                    is UiState.Content -> DashBoard(result.data as Device, navController = navController)
-                    is UiState.Error -> Text(text = result.message)
-                    UiState.Loading -> CircularProgressIndicator()
-                    UiState.Empty -> {}
+            Column {
+                Button(onClick = {
+                    coroutineScope.launch {
+                        withContext(Dispatchers.IO){
+                            Log.e("ResponseFromOkHttpLib", OkHttpApiResponseProvider().getResponseFromApiThroughOkHttpLib())
+                        }
+                    }
+                }) {
+                    Text("Get response from OkHttp Library")
                 }
             }
+
+//            val mainViewModel by remember { ac.viewModels<DashBoardViewModel>() }
+//            Box(
+//                contentAlignment = Alignment.Center,
+//                modifier = Modifier.fillMaxSize()
+//            ) {
+//                when (val result =
+//                    mainViewModel.uiState.collectAsState().value) {
+//                    is UiState.Content -> DashBoard(result.data as Device, navController = navController)
+//                    is UiState.Error -> Text(text = result.message)
+//                    UiState.Loading -> CircularProgressIndicator()
+//                    UiState.Empty -> {}
+//                }
+//            }
         }
     }
 
