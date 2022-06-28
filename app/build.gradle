@@ -1,6 +1,6 @@
 plugins {
-//    id 'com.android.library'
-    id 'com.android.application'
+    id 'com.android.library'
+//    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
@@ -9,7 +9,7 @@ android {
     compileSdk 31
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "com.bolttech.bolthome"
+//        applicationId "com.bolttech.bolthome"
         minSdk 21
         targetSdk 31
         versionCode 1
